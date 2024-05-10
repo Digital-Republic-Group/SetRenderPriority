@@ -1,4 +1,6 @@
-package com.firedna.fdna;
+package com.firedna.fdna.plugins.SetRenderPriority;
+
+import android.webkit.WebView;
 
 import com.getcapacitor.JSObject;
 import com.getcapacitor.Plugin;
@@ -8,15 +10,21 @@ import com.getcapacitor.annotation.CapacitorPlugin;
 
 @CapacitorPlugin(name = "SetRenderPriority")
 public class SetRenderPriorityPlugin extends Plugin {
+    private SetRenderPriority implementation;
 
-    private SetRenderPriority implementation = new SetRenderPriority();
-
+    public void load(WebView webview) {
+        implementation = new SetRenderPriority(getActivity());
+    }
+//    @PluginMethod()
+//    public void setRenderPriority(WebView webview) {
+//        webview.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false);
+//    }
     @PluginMethod
-    public void echo(PluginCall call) {
-        String value = call.getString("value");
-
+    public void setRenderPriority(PluginCall call) {
+        // Implement the method logic here for Android WebView
         JSObject ret = new JSObject();
-        ret.put("value", implementation.echo(value));
+        // your logic
         call.resolve(ret);
     }
+
 }

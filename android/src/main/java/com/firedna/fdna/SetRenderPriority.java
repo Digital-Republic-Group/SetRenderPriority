@@ -1,13 +1,16 @@
-package com.firedna.fdna;
-
-import android.util.Log;
+package com.firedna.fdna.plugins.SetRenderPriority;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class SetRenderPriority {
+    private AppCompatActivity activity;
 
-    public String echo(String value) {
-        Log.i("Echo", value);
-        webView.setRendererPriorityPolicy(WebView.RENDERER_PRIORITY_IMPORTANT, false);
-        
-        return value;
+    public SetRenderPriority(AppCompatActivity activity) {
+    }
+
+    public void ScreenOrientation(AppCompatActivity activity) {
+        this.activity = activity;
+    }
+    public String getCurrentOrientationType() {
+        return "text";
     }
 }
